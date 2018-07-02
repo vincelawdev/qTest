@@ -26,7 +26,7 @@ api.fanOut = (input, fn) => {
         input.forEach((value) => {
             newArray.push(fn(value));
         });
-    }    
+    }
 
     return newArray;
 };
@@ -79,10 +79,18 @@ api.funnel = (input, fn, startValue) => {
 
  */
 api.distill = (input, fn) => {
-  /**
-   * Your implementation goes here
-   */
-  return [];
+    let newArray = [];
+
+    // ensure input is an array
+    if(input instanceof Array) {
+        input.forEach((value) => {
+            if(fn(value)) {
+                newArray.push(value);
+            }
+        });
+    }
+
+    return newArray;
 };
 
 /**
