@@ -53,10 +53,16 @@ api.fanOut = (input, fn) => {
 
  */
 api.funnel = (input, fn, startValue) => {
-  /**
-   * Your implementation goes here
-   */
-  return 0;
+    let newValue = startValue;
+
+    // ensure input is an array
+    if(input instanceof Array) {
+        input.forEach((value) => {
+            newValue = fn(newValue, value);
+        });
+    }
+
+    return newValue;
 };
 
 /**
