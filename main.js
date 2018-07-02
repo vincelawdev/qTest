@@ -19,10 +19,16 @@ var api = {};
 
 */
 api.fanOut = (input, fn) => {
-  /**
-   * Your implementation goes here
-   */
-  return [];
+    let newArray = [];
+
+    // ensure input is an array
+    if(input instanceof Array) {
+        input.forEach((value) => {
+            newArray.push(fn(value));
+        });
+    }    
+
+    return newArray;
 };
 
 /**
@@ -95,10 +101,17 @@ api.distill = (input, fn) => {
 
  */
 api.numberOfChars = (input) => {
-  /**
-   * Your implementation goes here
-   */
-  return 0;
+    let numberOfMatches = 0;
+
+    // ensure input is an array
+    if(input instanceof Array) {
+        input.forEach((value) => {
+            // make input item a string before getting length of string
+            numberOfMatches += String(value).length;
+        });
+    }
+
+    return numberOfMatches;
 };
 
 /**
@@ -119,10 +132,17 @@ api.numberOfChars = (input) => {
 
  */
 api.numberOfCertainChars = (input, c) => {
-  /**
-   * Your implementation goes here
-   */
-  return 0;
+    let numberOfMatches = 0;
+
+    // ensure input is an array
+    if(input instanceof Array) {
+        input.forEach((value) => {
+            // make input item a string before finding matches
+            numberOfMatches += String(value).split(c).length - 1;
+        });
+    }
+
+    return numberOfMatches;
 };
 
 module.exports = api;
